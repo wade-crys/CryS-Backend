@@ -1,0 +1,7 @@
+{
+  "queryStringParameters": {
+    "symbol": "BTC",
+    "format": "JSON-LD",
+    "period": "3"
+  }
+}

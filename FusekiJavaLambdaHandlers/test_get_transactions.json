@@ -1,0 +1,6 @@
+{
+  "queryStringParameters": {
+    "limit": "10",
+    "format": "JSON-LD"
+  }
+}
