@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from collections import namedtuple
+from collections import namedtuple, defaultdict
 from jinja2 import Template
 import datetime
 import pickle
@@ -54,7 +54,7 @@ def parse_news(news_data):
     return {
         'id': "news-" + str(uuid.uuid4()),
         'title': news_data.title,
-        'description': news_data.description,
+        'description': news_data.description.replace('\"', '\\"'),
         'source': news_data.source,
         'date_published': news_data.created_at,
         'url': news_data.url,
@@ -136,14 +136,14 @@ def cli(template, coinmarketcap_json, cryptopanic_pickle, transactions_csv,
                                        price_history_by_coin=price_history_by_coin)
     output_file.write(rendered_ttl)
 
-
-    # addresses = defaultdict(int)
-    # for transaction in data:
-    #     addresses[transaction[1]] += 1
-    #     addresses[transaction[2]] += 1
-    # for addr, count in addresses.items():
-    #     if count > 1:
-    #         print(addr, count)
+    # Print the addresses that show up in more than 1 transactions
+    addresses = defaultdict(int)
+    for transaction in transactions:
+        addresses[transaction['sender']] += 1
+        addresses[transaction['receiver']] += 1
+    for addr, count in addresses.items():
+        if count > 1:
+            print(addr, count)
 
 
 if __name__ == '__main__':

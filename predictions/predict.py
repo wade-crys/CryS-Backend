@@ -48,7 +48,8 @@ def cli(symbol, from_coinmarketcap, historical_price_directory, publish):
         coinmarketcap = json.load(from_coinmarketcap)
         symbol = [coin['symbol'] for coin in sorted(coinmarketcap.values(),
                                                     key=lambda x: x['cmc_rank'])]
-    for s in symbol:
+    for indx, s in enumerate(symbol):
+        print('Predicting values for {} ({}/{})'.format(s, indx + 1, len(symbol)))
         price_file_path = os.path.join(historical_price_directory,
                                        s + '_daily.csv')
 
@@ -70,7 +71,6 @@ def cli(symbol, from_coinmarketcap, historical_price_directory, publish):
         predicted['timestamp'] = pd.to_datetime(predicted.index.values,
                                                 unit='s')
         predicted = predicted[['timestamp', 'high']]
-        print(predicted)
         # uncomment if you need to check performance
         # mape = np.mean(np.abs(predicted['high'] - actual['high']) / np.abs(
         #     actual['high'])) * 100  # MAPE
@@ -92,14 +92,12 @@ def cli(symbol, from_coinmarketcap, historical_price_directory, publish):
                 GRAPHDB_CLIENT.method = "POST"
                 GRAPHDB_CLIENT.setReturnFormat(JSON)
                 results = GRAPHDB_CLIENT.query().convert()
-                print(results)
                 # insert in fuseki
                 FUSEKI_CLIENT.setQuery(query)
                 FUSEKI_CLIENT.queryType = "INSERT"
                 FUSEKI_CLIENT.method = "POST"
                 FUSEKI_CLIENT.setReturnFormat(JSON)
                 results = FUSEKI_CLIENT.query().convert()
-                print(results)
             else:
                 print(query)
 
