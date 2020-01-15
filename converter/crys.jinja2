@@ -1,0 +1,313 @@
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+
+@prefix crys:  <http://example.com/crys#> .
+
+# Properties about coins
+crys:category       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Identification number" ;
+                    rdfs:domain             crys:Coin ;
+                    rdfs:range              xsd:string ;
+                    owl:oneOf               ("coin" "token") .
+
+
+crys:circulating_supply       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Total number of available units" ;
+                    rdfs:domain             crys:Coin ;
+                    rdfs:range              xsd:float .
+
+crys:cmc_rank       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Rank by Market Capitalization" ;
+                    rdfs:domain             crys:Coin ;
+                    rdfs:range              xsd:nonNegativeInteger .
+
+
+crys:date_added       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Date item was added in the database" ;
+                    rdfs:domain             crys:Coin ;
+                    rdfs:range              xsd:dateTime .
+
+crys:synopsis       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Description of cryptocoin" ;
+                    rdfs:domain             crys:Coin ;
+                    rdfs:range              xsd:string ;
+                    owl:equivalentProperty  rdfs:comment .
+
+
+crys:id     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Identification number" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:nonNegativeInteger .
+
+crys:logo     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Logo of cryptocurrency" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:name     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Name of the cryptocurrency" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string ;
+            owl:equivalentProperty  rdfs:label .
+
+crys:platform     rdf:type                owl:ObjectProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocurrency a certain coin is based on" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              crys:Coin .
+
+crys:market_cap     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Market cap in USD" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:float .
+
+crys:percent_change_24h     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Price variance for 24h in USD" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:float .
+
+crys:percent_change_7d     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Price variance for 7d in USD" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:float .
+
+crys:price     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Price per unit in USD" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:float .
+
+crys:status     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Identification number" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string ;
+            owl:oneOf               ("active" "inactive") .
+
+crys:symbol     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocurrencie's symbol abbreviation" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:mineable     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Whether or not a coin is mineable" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:boolean .
+
+crys:announcement     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Announcement of cryptocoin" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:chat     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Chat for cryptocoin" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:explorer     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Crpytocoin blockchain explorer" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:message_board     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocoin message board" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:reddit     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocoin subreddit" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:source_code     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocoin source code" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:technical_doc     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocoin technical doc" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:twitter     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Cryptocoin twitter profile" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+crys:website     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Crpytocoin website" ;
+            rdfs:domain             crys:Coin ;
+            rdfs:range              xsd:string .
+
+# Properties about news
+
+crys:title     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "News title" ;
+            rdfs:domain             crys:News ;
+            rdfs:range              xsd:string .
+
+crys:description     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "News description" ;
+            rdfs:domain             crys:News ;
+            rdfs:range              xsd:string .
+
+crys:date_published       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Date news was published" ;
+                    rdfs:domain             crys:News ;
+                    rdfs:range              xsd:dateTime .
+
+crys:source     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "News source" ;
+            rdfs:domain             crys:News ;
+            rdfs:range              xsd:string .
+
+crys:about     rdf:type                owl:ObjectProperty ;
+            rdfs:comment            "News title" ;
+            rdfs:domain             crys:News ;
+            rdfs:range              crys:Coin .
+
+crys:cryptpanic_url     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Link" ;
+            rdfs:domain             crys:News ;
+            rdfs:range              xsd:string .
+
+# Properties about transactions
+
+crys:hash rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+          rdfs:comment            "Transaction hash" ;
+          rdfs:domain crys:Transaction ;
+          rdfs:range xsd:string .
+
+crys:sender rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+          rdfs:comment            "Sender blockchain address" ;
+          rdfs:domain crys:Transaction ;
+          rdfs:range crys:Address .
+
+crys:receiver rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+          rdfs:comment            "Receiver blochain address" ;
+          rdfs:domain crys:Transaction ;
+          rdfs:range crys:Address .
+
+crys:amount rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+            rdfs:comment            "Amount traded in relative currency" ;
+            rdfs:domain crys:Transaction ;
+            rdfs:range xsd:float .
+
+crys:amount_usd rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+                rdfs:comment            "Amount traded in USD" ;
+                rdfs:domain crys:Transaction ;
+                rdfs:range xsd:float .
+
+crys:transfers rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+               rdfs:comment            "Coin traded" ;
+               rdfs:domain crys:Transaction ;
+               rdfs:range crys:Coin .
+
+crys:date_traded       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Date transaction was issued" ;
+                    rdfs:domain             crys:Transaction ;
+                    rdfs:range              xsd:dateTime .
+
+# Properties about price history
+
+crys:value rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+                rdfs:comment            "Value of coin in USD" ;
+                rdfs:domain crys:PriceHistory ;
+                rdfs:range xsd:float .
+
+crys:belongs_to rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+               rdfs:comment            "Coin the historical price belongs to" ;
+               rdfs:domain crys:PriceHistory ;
+               rdfs:range crys:Coin .
+
+crys:at_date       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Point in time when value was observed" ;
+                    rdfs:domain             crys:PriceHistory ;
+                    rdfs:range              xsd:date .
+
+# Classes
+
+crys:Coin    rdf:type        owl:Class ;
+             rdfs:comment    "Coin entity" .
+
+crys:News    rdf:type        owl:Class ;
+             rdfs:comment    "News entity" .
+
+crys:Transaction    rdf:type        owl:Class ;
+             rdfs:comment    "Transaction entity" .
+
+crys:Address rdf:type owl:Class .
+
+crys:PriceHistory rdf:type owl:Class .
+
+
+# Coins
+
+{% for coin in coins %}
+crys:{{ coin["symbol"] }}    rdf:type    crys:Coin ;
+    crys:category    "{{ coin["category"] }}" ;
+    crys:circulating_supply    "{{ coin["circulating_supply"] }}"^^xsd:float ;
+    crys:cmc_rank    "{{ coin["cmc_rank"] }}"^^xsd:nonNegativeInteger ;
+    crys:date_added    "{{ coin["date_added"] }}"^^xsd:dateTime ;
+    crys:synopsis    """{{ coin["description"] }}""" ;
+    crys:id    "{{ coin["id"] }}"^^xsd:nonNegativeInteger ;
+    crys:logo    "{{ coin["logo"] }}" ;
+    crys:name    "{{ coin["name"] }}" ;
+    crys:market_cap    "{{ coin["market_cap"] }}"^^xsd:float ;
+    crys:percent_change_24h    "{{ coin["percent_change_24h"] }}"^^xsd:float ;
+    crys:percent_change_7d    "{{ coin["percent_change_7d"] }}"^^xsd:float ;
+    crys:price    "{{ coin["price"] }}"^^xsd:float ;
+    crys:status    "{{ coin["status"] }}" ;
+    crys:mineable    "{{ coin["mineable"] }}" ;
+    {% for key, value in coin['urls'].items() -%}
+    crys:{{ key }}    "{{ value }}" ;
+    {% endfor -%}
+    {%- if 'platform' in coin -%}
+    crys:platform    crys:{{ coin.platform }} ;
+    {% endif -%}
+    crys:symbol    "{{ coin["symbol"] }}" .
+{% endfor %}
+
+# News
+
+{% for n in news %}
+crys:{{ n["id"] }}    rdf:type    crys:News ;
+    crys:title    """{{ n["title"] }}""" ;
+    crys:description    """{{ n["description"] }}""" ;
+    crys:source    "{{ n["source"] }}" ;
+    crys:date_published    "{{ n["date_published"] }}"^^xsd:dateTime ;
+    {% if n["about"]|length  -%}
+    crys:about    {% for coin in n["about"] %}crys:{{ coin }}{{ ", " if not loop.last }}{% endfor %} ;
+    {% endif -%}
+    crys:url    "{{ n["url"] }}" .
+{% endfor %}
+
+# Addresses
+
+{% for address in addresses -%}
+crys:{{ address }}    rdf:type    crys:Addres .
+{% endfor -%}
+
+# Transactions
+
+{% for transaction in transactions %}
+crys:{{ transaction["hash"] }}    rdf:type    crys:Transaction ;
+    crys:hash    "{{ transaction["hash"] }}" ;
+    crys:sender    crys:{{ transaction["sender"] }} ;
+    crys:receiver    crys:{{ transaction["receiver"] }} ;
+    crys:amount    "{{ transaction["amount"] }}"^^xsd:float ;
+    crys:amount_usd    "{{ transaction["amount_usd"] }}"^^xsd:float ;
+    crys:date_traded    "{{ transaction["date_traded"] }}"^^xsd:dateTime ;
+    crys:transfers    crys:BTC .
+{% endfor %}
+
+# Price history
+
+{% for coin, price_history in price_history_by_coin.items() %}
+# Price history for {{ coin }}
+{% for ph in price_history %}
+crys:{{ ph["id"] }}    rdf:type    crys:PriceHistory ;
+    crys:belongs_to    crys:{{ coin }} ;
+    crys:value    "{{ ph["value"] }}"^^xsd:float ;
+    crys:at_date    "{{ ph["at_date"] }}"^^xsd:date .
+{% endfor %}
+{% endfor %}
