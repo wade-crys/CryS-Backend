@@ -165,7 +165,7 @@ crys:about     rdf:type                owl:ObjectProperty ;
             rdfs:domain             crys:News ;
             rdfs:range              crys:Coin .
 
-crys:cryptpanic_url     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+crys:cryptopanic_url     rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
             rdfs:comment            "Link" ;
             rdfs:domain             crys:News ;
             rdfs:range              xsd:string .
@@ -224,6 +224,30 @@ crys:at_date       rdf:type                owl:DatatypeProperty, owl:FunctionalP
                     rdfs:domain             crys:PriceHistory ;
                     rdfs:range              xsd:date .
 
+
+# Properties about Predictions
+
+crys:for rdf:type owl:ObjectProperty, owl:FunctionalProperty ;
+               rdfs:comment            "Coin the price prediction belongs to" ;
+               rdfs:domain crys:Prediction ;
+               rdfs:range crys:Coin .
+
+crys:predicted_price rdf:type owl:DatatypeProperty, owl:FunctionalProperty ;
+                rdfs:comment            "Predicted value of coin in USD" ;
+                rdfs:domain crys:Prediction ;
+                rdfs:range xsd:float .
+
+crys:predicted_date       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Date for prediction" ;
+                    rdfs:domain             crys:Prediction ;
+                    rdfs:range              xsd:date .
+
+crys:generated_at       rdf:type                owl:DatatypeProperty, owl:FunctionalProperty ;
+                    rdfs:comment            "Point in time when the prediction was generated" ;
+                    rdfs:domain             crys:Prediction ;
+                    rdfs:range              xsd:date .
+
+
 # Classes
 
 crys:Coin    rdf:type        owl:Class ;
@@ -237,7 +261,12 @@ crys:Transaction    rdf:type        owl:Class ;
 
 crys:Address rdf:type owl:Class .
 
-crys:PriceHistory rdf:type owl:Class .
+crys:PriceHistory rdf:type owl:Class ;
+    rdfs:comment    "PriceHistory entity" .
+
+crys:Prediction rdf:type owl:Class ;
+    rdfs:comment    "Prediction entity" .
+
 
 
 # Coins
@@ -263,6 +292,9 @@ crys:{{ coin["symbol"] }}    rdf:type    crys:Coin ;
     {% endfor -%}
     {%- if 'platform' in coin -%}
     crys:platform    crys:{{ coin.platform }} ;
+    {% endif -%}
+    {%- if 'technical_doc' in coin['urls'] -%}
+    rdfs:seeAlso     <{{ coin['urls']['technical_doc'] }}> ;
     {% endif -%}
     crys:symbol    "{{ coin["symbol"] }}" .
 {% endfor %}

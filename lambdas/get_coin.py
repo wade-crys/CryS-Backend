@@ -8,6 +8,7 @@ def lambda_handler(event, context):
     query_base = """
 PREFIX crys: <http://example.com/crys#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#> 
 SELECT * WHERE {{
     ?coin rdf:type crys:Coin ;
           crys:id "{id}"^^xsd:nonNegativeInteger ;
@@ -34,6 +35,7 @@ SELECT * WHERE {{
     optional {{?coin  crys:twitter ?twitter }} .
     optional {{?coin  crys:website ?website }} .
     optional {{?coin  crys:platform ?platform }} .
+    optional {{?coin  rdfs:seeAlso ?seeAlso }} .
 }}
 """
 
