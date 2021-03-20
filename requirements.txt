@@ -15,7 +15,7 @@ future==0.18.2
 h5py==2.10.0
 idna==2.8
 isodate==0.6.0
-Jinja2==2.10.3
+Jinja2==2.11.3
 joblib==0.14.1
 Keras==2.3.1
 Keras-Applications==1.0.8
