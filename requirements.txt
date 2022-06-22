@@ -25,7 +25,7 @@ lxml==4.4.2
 MarkupSafe==1.1.1
 matplotlib==3.1.2
 numdifftools==0.9.39
-numpy==1.18.1
+numpy==1.22.0
 pandas==0.25.3
 parse==1.12.1
 parsimonious==0.8.1
